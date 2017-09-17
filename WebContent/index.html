@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.m"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+
+		<script>
+			//one way to load local resources else data-sap-ui-resourceroots = '{"com.Project":""}' during bootstrap
+			sap.ui.localResources("splitscreen");
+
+			//creating splitscreen app
+			var app = new sap.m.SplitApp({
+				initialPage : "idMasterPage1"
+			});
+			
+			var mpage = sap.ui.view({
+				id : "idMasterPage1",
+				viewName : "splitscreen.MasterPage",
+				type : sap.ui.core.mvc.ViewType.XML
+			});
+			
+			var dpage = sap.ui.view({
+				id : "idDetailPage1",
+				viewName : "splitscreen.DetailPage",
+				type : sap.ui.core.mvc.ViewType.XML
+			});
+			
+			//adding views to the app &placing it to the DOM
+			app.addMasterPage(mpage);
+			app.addDetailPage(dpage);
+			app.placeAt("content");
+		</script>
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>
